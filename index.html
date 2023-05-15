@@ -12,6 +12,17 @@
 <body>
     <main>
         <h1>PAISES LATINOAMERICANOS</h1>
+        <div class="p-3 mb-3 border-danger border">
+
+          <button class="btn btn-danger" onclick="filtrarPaises()">FILTRAR</button>
+          <button class="btn btn-warning" onclick="pintarpaisesOriginales()">TODOS LOS PAISES</button>
+          <div class="mb-3">
+            <label for="filtro" class="form-label">filtrar por nombre</label>
+            <input type="text" class="form-control" id="filtro" placeholder="ingrese nombre de pais a buscar" onkeyup="aplicarFiltroNombre(event)">
+            
+          </div>
+
+        </div>
         <table class="table table-striped table-primary m-3">
             <thead>
               <tr>

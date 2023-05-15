@@ -94,9 +94,14 @@ const paisesLatinoamerica = [
 
 const tableBodyHTML = document.getElementById("tableBody");
 
-paisesLatinoamerica.forEach((algo, index) =>  {
+function renderizarTabla(arraydePaises)
+
+{
+  tableBodyHTML.innerHTML="";
+  arraydePaises.forEach((algo, index) =>  {
+
     const posicion = String(index + 1).padStart(2, '0');
-    // document.write(`${posicion} - ${algo.nombre} <br>`)
+    
     tableBodyHTML.innerHTML += `<tr>
                                     <th scope="row">${posicion}</th>
                                     <td>${algo.nombre}</td>
@@ -105,3 +110,29 @@ paisesLatinoamerica.forEach((algo, index) =>  {
                                     <td>${algo.ubicacion}</td>
                                 </tr>`;
 })
+}
+
+function pintarpaisesOriginales(){
+  renderizarTabla(paisesLatinoamerica);
+
+} 
+
+
+function aplicarFiltroNombre(eventoHTML)
+{
+const valorfiltro=eventoHTML.target.value.toLowerCase();
+
+const paisesFiltrados=paisesLatinoamerica.filter(function(pais)
+{
+  const nombrePais=pais.nombre.toLowerCase();
+  if(nombrePais.includes(valorfiltro))
+  return true
+})
+renderizarTabla(paisesFiltrados);
+}
+
+
+
+
+
+

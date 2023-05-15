@@ -99,7 +99,7 @@ function renderizarTabla(arraydePaises)
 
 {
   tableBodyHTML.innerHTML="";
-  const copiaArray=[...paisesLatinoamerica];
+  
   arraydePaises.forEach((algo, index) =>  {
 
     const posicion = String(index + 1).padStart(2, '0');

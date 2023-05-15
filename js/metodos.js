@@ -91,6 +91,7 @@ const paisesLatinoamerica = [
     },
   ]
 
+  const copiaArray=[...paisesLatinoamerica];
 
 const tableBodyHTML = document.getElementById("tableBody");
 
@@ -98,6 +99,7 @@ function renderizarTabla(arraydePaises)
 
 {
   tableBodyHTML.innerHTML="";
+  const copiaArray=[...paisesLatinoamerica];
   arraydePaises.forEach((algo, index) =>  {
 
     const posicion = String(index + 1).padStart(2, '0');
@@ -108,6 +110,10 @@ function renderizarTabla(arraydePaises)
                                     <td>${algo.capital}</td>
                                     <td>${algo.habitantes}</td>
                                     <td>${algo.ubicacion}</td>
+                                    <td>
+                                    <button class="btn btn-warning" onclick="borrarPais(${index})"><i class="fa-solid fa-trash"></i></button>
+                                    </td>
+                                    
                                 </tr>`;
 })
 }
@@ -132,7 +138,11 @@ renderizarTabla(paisesFiltrados);
 }
 
 
-
-
+function borrarPais(indice)
+{
+  
+  copiaArray.splice(indice,1);
+  renderizarTabla(copiaArray);
+}
 
 

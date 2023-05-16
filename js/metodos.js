@@ -91,7 +91,8 @@ const paisesLatinoamerica = [
     },
   ]
 
-  const copiaArray=[...paisesLatinoamerica];
+let copiaArray=[...paisesLatinoamerica];
+
 
 const tableBodyHTML = document.getElementById("tableBody");
 
@@ -100,16 +101,16 @@ function renderizarTabla(arraydePaises)
 {
   tableBodyHTML.innerHTML="";
   
-  arraydePaises.forEach((algo, index) =>  {
+  arraydePaises.forEach((pais, index) =>  {
 
     const posicion = String(index + 1).padStart(2, '0');
     
     tableBodyHTML.innerHTML += `<tr>
                                     <th scope="row">${posicion}</th>
-                                    <td>${algo.nombre}</td>
-                                    <td>${algo.capital}</td>
-                                    <td>${algo.habitantes}</td>
-                                    <td>${algo.ubicacion}</td>
+                                    <td>${pais.nombre}</td>
+                                    <td>${pais.capital}</td>
+                                    <td>${pais.habitantes}</td>
+                                    <td>${pais.ubicacion}</td>
                                     <td>
                                     <button class="btn btn-warning" onclick="borrarPais(${index})"><i class="fa-solid fa-trash"></i></button>
                                     </td>
@@ -119,7 +120,10 @@ function renderizarTabla(arraydePaises)
 }
 
 function pintarpaisesOriginales(){
+  copiaArray=[...paisesLatinoamerica];
   renderizarTabla(paisesLatinoamerica);
+  
+  poblacionTotal(paisesLatinoamerica);
 
 } 
 
@@ -135,6 +139,7 @@ const paisesFiltrados=paisesLatinoamerica.filter(function(pais)
   return true
 })
 renderizarTabla(paisesFiltrados);
+poblacionTotal(paisesFiltrados);
 }
 
 
@@ -143,6 +148,19 @@ function borrarPais(indice)
   
   copiaArray.splice(indice,1);
   renderizarTabla(copiaArray);
+  poblacionTotal(copiaArray);
 }
 
+
+function poblacionTotal(paises)
+{
+
+  const acumulacion= paises.reduce(function(acumulador,pais)
+  {
+    acumulador += pais.habitantes;
+    return acumulador;
+  },0)
+  const populationCell= document.getElementById("total");
+  populationCell.innerText=acumulacion;
+}
 

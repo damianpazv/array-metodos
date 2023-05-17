@@ -11,8 +11,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <main>
-        <h1>PAISES LATINOAMERICANOS</h1>
+    <main class="container-md">
+      <div class="row">
+<div class="col-12 col-lg-6">
+  <h1>PAISES LATINOAMERICANOS</h1>
         <div class="p-3 mb-3 border-danger border">
 
          
@@ -24,25 +26,37 @@
           </div>
 
         </div>
-        <table class="table table-striped table-primary m-3">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Capital</th>
-                <th scope="col">Habitantes</th>
-                <th scope="col">Ubicación</th>
-                <th><i class="fa-solid fa-wrench"></i></th>
-              </tr>
-            </thead>
-            <tbody id="tableBody">
-            </tbody>
-            <tfoot>
-              <td colspan="3" class="text-end">Total</td>
-              <td class="fw-bold fs-4" id="total"></td>
-              <td colspan="2"></td>
-            </tfoot>
-          </table>
+</div>
+<div class="col-6">
+  <table class="table table-striped table-primary m-3">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Capital</th>
+        <th scope="col">Habitantes</th>
+        <th scope="col">Ubicación</th>
+        <th><i class="fa-solid fa-wrench"></i></th>
+      </tr>
+    </thead>
+    <tbody id="tableBody">
+    </tbody>
+    <tfoot>
+      <td colspan="3" class="text-end">Total</td>
+      <td class="fw-bold fs-4" id="total"></td>
+      <td colspan="2"></td>
+    </tfoot>
+  </table>
+
+</div>
+
+
+
+
+
+      </div>
+      
+     
     </main>
     <script src="/js/metodos.js"></script> 
 </body>

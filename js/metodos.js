@@ -3,7 +3,9 @@ const paisesLatinoamerica = [
       nombre: "Argentina",
       ubicacion: "Sur de Sudamérica",
       habitantes: 45000000,
-      capital: "Buenos Aires"
+      capital: "Buenos Aires",
+      imagen: "https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg",
+      continente: "America",
     },
     {
       nombre: "Bolivia",
@@ -95,6 +97,7 @@ let copiaArray=[...paisesLatinoamerica];
 
 
 const tableBodyHTML = document.getElementById("tableBody");
+const countriesform=document.getElementById("paises-form");
 
 function renderizarTabla(arraydePaises)
 
@@ -105,7 +108,10 @@ function renderizarTabla(arraydePaises)
 
     const posicion = String(index + 1).padStart(2, '0');
     
+    let paisImage= pais.imagen ? pais.imagen : "/assets/images/default.jpg";
+    
     tableBodyHTML.innerHTML += `<tr>
+                                    <td><img class="pais-img" src="${paisImage}"></td>
                                     <th scope="row">${posicion}</th>
                                     <td>${pais.nombre}</td>
                                     <td>${pais.capital}</td>
@@ -163,4 +169,32 @@ function poblacionTotal(paises)
   const populationCell= document.getElementById("total");
   populationCell.innerText=acumulacion;
 }
+
+
+
+
+
+countriesform.addEventListener("submit",function(evt){
+  evt.preventDefault();
+ 
+  
+const el= evt.target.elements;
+
+  const nuevoPais=
+  {
+    nombre: el.nombre.value,
+    ubicacion: el.ubicacion.value,
+    habitantes: el.habitantes.valueAsNumber,
+    capital: el.capital.value,
+    imagen: el.imagen.value,
+    continente:el.continente.value,
+    active:el.active.checked
+
+  }
+paisesLatinoamerica.push(nuevoPais);
+renderizarTabla(paisesLatinoamerica);
+})
+
+
+
 

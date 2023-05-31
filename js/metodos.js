@@ -1,99 +1,106 @@
-// const paisesLatinoamerica = [
-//     {
-//       nombre: "Argentina",
-//       ubicacion: "Sur de Sudamérica",
-//       habitantes: 45000000,
-//       capital: "Buenos Aires",
-//       imagen: "https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg",
-//       continente: "America",
-//     },
-//     {
-//       nombre: "Bolivia",
-//       ubicacion: "Centro de Sudamérica",
-//       habitantes: 11000000,
-//       capital: "La Paz"
-//     },
-//     {
-//       nombre: "Brasil",
-//       ubicacion: "Este de Sudamérica",
-//       habitantes: 211000000,
-//       capital: "Brasilia"
-//     },
-//     {
-//       nombre: "Chile",
-//       ubicacion: "Sur de Sudamérica",
-//       habitantes: 19000000,
-//       capital: "Santiago"
-//     },
-//     {
-//       nombre: "Colombia",
-//       ubicacion: "Norte de Sudamérica",
-//       habitantes: 50340000,
-//       capital: "Bogotá"
-//     },
-//     {
-//       nombre: "Costa Rica",
-//       ubicacion: "Centroamérica",
-//       habitantes: 5100000,
-//       capital: "San José"
-//     },
-//     {
-//       nombre: "Cuba",
-//       ubicacion: "El Caribe",
-//       habitantes: 11400000,
-//       capital: "La Habana"
-//     },
-//     {
-//       nombre: "Ecuador",
-//       ubicacion: "Oeste de Sudamérica",
-//       habitantes: 17300000,
-//       capital: "Quito"
-//     },
-//     {
-//       nombre: "El Salvador",
-//       ubicacion: "Centroamérica",
-//       habitantes: 6500000,
-//       capital: "San Salvador"
-//     },
-//     {
-//       nombre: "Guatemala",
-//       ubicacion: "Centroamérica",
-//       habitantes: 18200000,
-//       capital: "Ciudad de Guatemala"
-//     },
-//     {
-//       nombre: "Honduras",
-//       ubicacion: "Centroamérica",
-//       habitantes: 10000000,
-//       capital: "Tegucigalpa"
-//     },
-//     {
-//       nombre: "México",
-//       ubicacion: "Norte de América Central",
-//       habitantes: 128900000,
-//       capital: "Ciudad de México"
-//     },
-//     {
-//       nombre: "Nicaragua",
-//       ubicacion: "Centroamérica",
-//       habitantes: 6400000,
-//       capital: "Managua"
-//     },
-//     {
-//       nombre: "Panamá",
-//       ubicacion: "Centroamérica",
-//       habitantes: 4300000,
-//       capital: "Ciudad de Panamá"
-//     },
-//     {
-//       nombre: "Paraguay",
-//       ubicacion: "Centro de Sudamérica",
-//       habitantes: 7200000,
-//       capital: "Asunción"
-//     },
-//   ]
+ import { successAlert } from "./utils.js";
 
-const paisesLatinoamerica= JSON.parse(localStorage.getItem("paises"))  || [];
+successAlert("hola")
+ 
+ const paisesLatinoamerica = [
+     {
+       nombre: "Argentina",
+      ubicacion: "Sur de Sudamérica",
+      habitantes: 45000000,
+      capital: "Buenos Aires",
+      imagen: "https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg",
+      continente: "America",
+    },
+    {
+      nombre: "Bolivia",
+      ubicacion: "Centro de Sudamérica",
+      habitantes: 11000000,
+      capital: "La Paz"
+    },
+    {
+      nombre: "Brasil",
+      ubicacion: "Este de Sudamérica",
+      habitantes: 211000000,
+      capital: "Brasilia"
+    },
+    {
+      nombre: "Chile",
+      ubicacion: "Sur de Sudamérica",
+      habitantes: 19000000,
+      capital: "Santiago"
+    },
+    {
+      nombre: "Colombia",
+      ubicacion: "Norte de Sudamérica",
+      habitantes: 50340000,
+      capital: "Bogotá"
+    },
+    {
+      nombre: "Costa Rica",
+      ubicacion: "Centroamérica",
+      habitantes: 5100000,
+      capital: "San José"
+    },
+    {
+      nombre: "Cuba",
+      ubicacion: "El Caribe",
+      habitantes: 11400000,
+      capital: "La Habana"
+    },
+    {
+      nombre: "Ecuador",
+      ubicacion: "Oeste de Sudamérica",
+      habitantes: 17300000,
+      capital: "Quito"
+    },
+    {
+      nombre: "El Salvador",
+      ubicacion: "Centroamérica",
+      habitantes: 6500000,
+      capital: "San Salvador"
+    },
+    {
+      nombre: "Guatemala",
+      ubicacion: "Centroamérica",
+      habitantes: 18200000,
+      capital: "Ciudad de Guatemala"
+    },
+    {
+      nombre: "Honduras",
+      ubicacion: "Centroamérica",
+      habitantes: 10000000,
+      capital: "Tegucigalpa"
+    },
+    {
+      nombre: "México",
+      ubicacion: "Norte de América Central",
+      habitantes: 128900000,
+      capital: "Ciudad de México"
+    },
+    {
+      nombre: "Nicaragua",
+      ubicacion: "Centroamérica",
+      habitantes: 6400000,
+      capital: "Managua"
+     },
+     {
+       nombre: "Panamá",
+       ubicacion: "Centroamérica",
+       habitantes: 4300000,
+       capital: "Ciudad de Panamá"
+     },
+     {
+       nombre: "Paraguay",
+       ubicacion: "Centro de Sudamérica",
+       habitantes: 7200000,
+       capital: "Asunción"
+     },
+   ]
+
+
+
+
+//const paisesLatinoamerica1= JSON.parse(localStorage.getItem("paises"))  || [];
 
 let copiaArray=[...paisesLatinoamerica];
 
@@ -120,7 +127,8 @@ function renderizarTabla(arraydePaises)
                                     <td>${pais.habitantes}</td>
                                     <td>${pais.ubicacion}</td>
                                     <td>
-                                    <button class="btn btn-warning" onclick="borrarPais(${index})"><i class="fa-solid fa-trash"></i></button>
+                                    <button class="btn btn-warning" onclick="borrarPais(${pais.id})"><i class="fa-solid fa-trash"></i></button>
+                                    <button class="btn btn-info" onclick="editarPais(${pais.id})"><i class="fa-solid fa-trash"></i></button>
                                     </td>
                                     
                                 </tr>`;
@@ -151,14 +159,17 @@ poblacionTotal(paisesFiltrados);
 }
 
 
-function borrarPais(indice)
+function borrarPais(id)
 {
   
   // copiaArray.splice(indice,1);
   // renderizarTabla(copiaArray);
   // poblacionTotal(copiaArray);
 
-  paisesLatinoamerica.splice(indice,1);
+  
+
+  const idx=paisesLatinoamerica.findIndex(pais=>pais.id === id)
+  paisesLatinoamerica.splice(idx,1);
   localStorage.setItem("paises",JSON.stringify());
   renderizarTabla(paisesLatinoamerica);
 }

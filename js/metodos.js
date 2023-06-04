@@ -1,8 +1,8 @@
- import { successAlert } from "./utils.js";
+// import { successAlert } from "./utils.js";
 
-successAlert("hola")
+//successAlert("hola")
  
- const paisesLatinoamerica = [
+/*const paisesLatinoamerica = [
      {
        nombre: "Argentina",
       ubicacion: "Sur de Sudamérica",
@@ -95,18 +95,21 @@ successAlert("hola")
        habitantes: 7200000,
        capital: "Asunción"
      },
-   ]
+   ] */
 
 
 
 
-//const paisesLatinoamerica1= JSON.parse(localStorage.getItem("paises"))  || [];
+const paisesLatinoamerica= JSON.parse(localStorage.getItem("paises"))  || [];
 
 let copiaArray=[...paisesLatinoamerica];
 
 
 const tableBodyHTML = document.getElementById("tableBody");
 const countriesform=document.getElementById("paises-form");
+const buttonForm= document.getElementById("formButton");
+
+let editIndex;
 
 function renderizarTabla(arraydePaises)
 
@@ -128,20 +131,20 @@ function renderizarTabla(arraydePaises)
                                     <td>${pais.ubicacion}</td>
                                     <td>
                                     <button class="btn btn-warning" onclick="borrarPais(${pais.id})"><i class="fa-solid fa-trash"></i></button>
-                                    <button class="btn btn-info" onclick="editarPais(${pais.id})"><i class="fa-solid fa-trash"></i></button>
+                                    <button class="btn btn-info" onclick="editarPais(${pais.id})"><i class="fa-solid fa-edit"></i></button>
                                     </td>
                                     
                                 </tr>`;
 })
 }
-
+//renderizarTabla(paisesLatinoamerica);
 function pintarpaisesOriginales(){
-  copiaArray=[...paisesLatinoamerica];
+  //copiaArray=[...paisesLatinoamerica];
   renderizarTabla(paisesLatinoamerica);
   
   poblacionTotal(paisesLatinoamerica);
 
-} 
+} ;
 
 
 function aplicarFiltroNombre(eventoHTML)
@@ -186,13 +189,11 @@ function poblacionTotal(paises)
   const populationCell= document.getElementById("total");
   populationCell.innerText=acumulacion;
 }
+function agregarEditarPais(evt)
+{
 
-
-
-
-
-countriesform.addEventListener("submit",function(evt){
   evt.preventDefault();
+  
  
   
 const el= evt.target.elements;
@@ -205,17 +206,73 @@ const el= evt.target.elements;
     capital: el.capital.value,
     imagen: el.imagen.value,
     continente:el.continente.value,
-    active:el.active.checked
+    active:el.active.checked,
+    id: Date.now()
 
   }
-paisesLatinoamerica.push(nuevoPais);
+
+  if(editIndex)
+  {
+    paisesLatinoamerica[editIndex]=nuevoPais;
+    editIndex=undefined;
+
+    localStorage.setItem("paises",JSON.stringify(paisesLatinoamerica));
+
+  }
+  else
+  {
+    paisesLatinoamerica.push(nuevoPais);
+
 
 localStorage.setItem("paises",JSON.stringify(paisesLatinoamerica));
+
+  }
+
 
 renderizarTabla(paisesLatinoamerica);
 
 evt.target.reset()
 el.nombre.focus()
+
+
+
+
+
+}
+function editarPais(id)
+{
+
+let pais=paisesLatinoamerica.find((pais,idx)=>{
+  if(pais.id === id){
+  editIndex= idx;
+  return true;
+  }
+});
+
+let el= countriesform.elements;
+
+el.nombre.value= pais.nombre;
+el.capital.value= pais.capital;
+el.ubicacion.value= pais.ubicacion;
+el.habitantes.value= pais.habitantes;
+el.imagen.value= pais.imagen;
+el.continente.value= pais.continente;
+el.active.value= pais.active;
+
+buttonForm.innerHTML=`  <button type="submit" class="btn btn-info">editar pais</button>`;
+
+
+
+};
+
+
+
+countriesform.addEventListener("submit",function(evt)
+{
+
+agregarEditarPais(evt);
+
+
 })
 
 

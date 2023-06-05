@@ -276,5 +276,20 @@ agregarEditarPais(evt);
 })
 
 
+function ordenar(order)
+{
+valor= order? 1 : -1;
 
+
+  const collator= new Intl.Collator("es-AR", {sensitivity:"base"});
+
+  paisesLatinoamerica.sort(function(a,b)
+  {
+    if (order) return collator.compare(b.nombre,a.nombre);
+    return collator.compare(a.nombre,b.nombre);
+  })
+
+  renderizarTabla(paisesLatinoamerica);
+
+}
 

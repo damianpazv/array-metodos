@@ -19,6 +19,8 @@
 
          
           <button class="btn btn-warning" onclick="pintarpaisesOriginales()">TODOS LOS PAISES</button>
+          <button class="btn btn-info " onclick="ordenar()"> Ordenar <i class="fa-solid fa-up-long"></i></button>
+          <button class="btn btn-info " onclick="ordenar(true)"> Ordenar <i class="fa-solid fa-down-long"></i></button>
           <div class="mb-3">
             <label for="filtro" class="form-label">filtrar por nombre</label>
             <input type="text" class="form-control" id="filtro" placeholder="ingrese nombre de pais a buscar" onkeyup="aplicarFiltroNombre(event)">
